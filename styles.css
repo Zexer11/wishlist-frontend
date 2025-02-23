@@ -1,0 +1,85 @@
+body {
+    background-color: #F8F9FA; /* Light grey background */
+}
+.dark-mode {
+    background-color: #1E1E1E;
+    color: white;
+}
+/* styles.css */
+
+/* Lightbox styling */
+#lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+}
+
+#lightbox-img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+#lightbox-close {
+    cursor: pointer;
+}
+
+/* Uploaded image styling */
+.uploaded-image {
+    display: none;
+    margin-top: 10px;
+}
+
+.delete-btn {
+    display: none;
+}
+
+/* Comment styling */
+.comments-list {
+    margin-top: 10px;
+}
+
+.comment {
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+/* Modal Styles */
+#editModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+}
+/* Show modal when active */
+#editModal.active {
+    display: flex;
+}
+/* Edit Icon Styles */
+.relative button {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.uploaded-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.hidden {
+    display: none;
+}
+

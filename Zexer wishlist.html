@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zexer Wishlist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="p-5">
+    <div class="max-w-4xl mx-auto">
+         <!-- Navigation Bar -->
+         <nav class="bg-gray-800 p-4 rounded-lg mt-5">
+            <ul class="flex space-x-4 text-white">
+                <li><a href="#wishlist" class="hover:text-gray-400">Wishlist</a></li>
+                <li><a href="#participants" class="hover:text-gray-400">Participants</a></li>
+                <li><a href="#profile" class="hover:text-gray-400">Profile</a></li>
+            </ul>
+        </nav>
+
+        <!-- Wishlist Section -->
+        <div id="wishlist" class="mt-5">
+            <!-- Your existing wishlist items go here -->
+        </div>
+
+        <!-- Participants Section -->
+        <div id="participants" class="mt-10 bg-white p-5 shadow rounded-lg">
+            <h2 class="text-xl font-semibold">Participants</h2>
+            <div id="participantsList" class="mt-4">
+                <!-- Participants will be dynamically added here -->
+            </div>
+        </div>
+
+       <!-- Profile Section -->
+<div id="profile" class="mt-10 bg-white p-5 shadow rounded-lg">
+    <h2 class="text-xl font-semibold">Profile</h2>
+    <div class="mt-4 flex items-center space-x-4">
+        <!-- Profile Picture -->
+        <div class="relative">
+            <img id="profilePic" src="https://dummyimage.com/100x100/000/fff" alt="Profile Picture" class="w-16 h-16 rounded-full object-cover">
+            <button onclick="openEditModal()" class="absolute bottom-0 right-0 bg-blue-500 text-white p-1 rounded-full">
+                ✏️ <!-- Edit Icon -->
+            </button>
+            
+        </div>
+        <!-- Username -->
+        <div>
+            <p id="username" class="text-lg font-medium">Liz</p>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Profile Modal -->
+<div id="editModal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center">
+    <div class="bg-white p-5 rounded-lg w-96">
+        <h2 class="text-xl font-semibold">Edit Profile</h2>
+        <form id="editProfileForm" class="mt-4">
+            <!-- Profile Picture Upload -->
+            <div class="mb-4">
+                <label for="profilePicInput" class="block text-sm font-medium text-gray-700">Profile Picture:</label>
+                <input type="file" id="profilePicInput" accept="image/*" class="mt-1 p-2 border rounded w-full" onchange="previewProfilePic(event)">
+                <img id="profilePicPreview" src="https://dummyimage.com/100x100/000/fff" alt="Profile Picture Preview" class="mt-2 w-16 h-16 rounded-full object-cover">
+            </div>
+            <!-- Username Input -->
+            <div class="mb-4">
+                <label for="usernameInput" class="block text-sm font-medium text-gray-700">Username:</label>
+                <input type="text" id="usernameInput" class="mt-1 p-2 border rounded w-full" placeholder="Enter your username">
+            </div>
+            <!-- Save and Cancel Buttons -->
+            <div class="flex space-x-2">
+                <button type="submit" class="bg-blue-500 text-white p-2 rounded">Save</button>
+                <button type="button" onclick="closeEditModal()" class="bg-gray-500 text-white p-2 rounded">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+        <!-- Share Wishlist Button -->
+        <div class="mt-5">
+            <button onclick="shareWishlist()" class="bg-green-500 text-white p-2 rounded">
+                Share Wishlist
+            </button>
+        </div>
+
+        <!-- Header -->
+        <div class="flex justify-between items-center bg-mint-600 p-4 rounded-lg shadow-lg">
+            <h1 class="text-2xl font-bold text-black">Liz's Wishlist</h1>
+        </div>
+
+        <!-- Categories -->
+        <div class="mt-5">
+            <!-- Shoes Section -->
+            <h2 class="text-xl font-semibold mt-4">Shoes</h2>
+            <div id="shoes" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Shoe 1 -->
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/1.jpg" alt="Adidas sambas" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Adidas sambas</h2>
+                    <p class="text-sm text-gray-600">Stylish sneakers for casual wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div>                    
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+
+                </div>
+            
+                <!-- Shoe 2 -->
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/2.jpg" alt="New balances 530" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">New balances 530</h2>
+                    <p class="text-sm text-gray-600">Stylish sneakers for casual wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+            
+                <!-- Shoe 3 -->
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/3.jpg" alt="Chelsea heel boot" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Chelsea heel boot</h2>
+                    <p class="text-sm text-gray-600">Stylish sneakers for formal wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                    
+                </div>
+                
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/38.jpg" alt="Slip back low heels" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Slip back low heels</h2>
+                    <p class="text-sm text-gray-600">Just classic.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/24.jpg" alt="Sandles" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Sandles</h2>
+                    <p class="text-sm text-gray-600">Great for everyday wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/25.jpg" alt="Sandles" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Sandles</h2>
+                    <p class="text-sm text-gray-600">Great for everyday wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+                <!-- Add more shoes following the same structure -->
+            </div>
+            
+
+            <!-- Dresses Section -->
+            <h2 class="text-xl font-semibold mt-4">Dresses</h2>
+            <div id="dresses" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/50.jpg" alt="Dresses" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Dresses</h2>
+                    <p class="text-sm text-gray-600">Varity of dresses both long and short.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/47.jpg" alt="Dress" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Short dress</h2>
+                    <p class="text-sm text-gray-600">Cute.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- Pants Section -->
+            <h2 class="text-xl font-semibold mt-4">Pants</h2>
+            <div id="pants" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/10.jpg" alt="Straight leg lounge trousers" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Straight leg lounge trousers</h2>
+                    <p class="text-sm text-gray-600">Confy.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/26.jpg" alt="Straight palazzo trousers" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Straight palazzo trousers</h2>
+                    <p class="text-sm text-gray-600">Just classic.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/36.jpg" alt="Straight palazzo trousers" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Straight palazzo trousers</h2>
+                    <p class="text-sm text-gray-600">Just classic.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/29.jpg" alt="Straight leg denim pants" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Straight leg denim pants</h2>
+                    <p class="text-sm text-gray-600">Casual wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skirts Section -->
+            <h2 class="text-xl font-semibold mt-4">Skirts</h2>
+            <div id="skirts" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/13.jpg" alt="Short skirt" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Short skirt</h2>
+                    <p class="text-sm text-gray-600">Casual wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/14.jpg" alt="Short skirt" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Short skirt</h2>
+                    <p class="text-sm text-gray-600">Casual wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/15.jpg" alt="Short skirt" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Short skirt</h2>
+                    <p class="text-sm text-gray-600">Casual wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/16.jpg" alt="Short skirt" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Short skirt</h2>
+                    <p class="text-sm text-gray-600">Casual wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/17.jpg" alt="Short skirt" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Short skirt</h2>
+                    <p class="text-sm text-gray-600">Casual wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/18.jpg" alt="Short skirt" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Short skirt</h2>
+                    <p class="text-sm text-gray-600">Casual wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/20.jpg" alt="Short skirt" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Short skirt</h2>
+                    <p class="text-sm text-gray-600">Casual wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/40.jpg" alt="Long skirt" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Long skirt</h2>
+                    <p class="text-sm text-gray-600">Casual wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/44.jpg" alt="Long skirt" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Long skirt</h2>
+                    <p class="text-sm text-gray-600">Casual wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/45.jpg" alt="Long skirt" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Long skirt</h2>
+                    <p class="text-sm text-gray-600">Casual wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/46.jpg" alt="Long skirt" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Long skirt</h2>
+                    <p class="text-sm text-gray-600">Casual wear.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tops Section -->
+            <h2 class="text-xl font-semibold mt-4">Tops</h2>
+            <div id="Tops" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/6.jpg" alt="Long sleeve tight top" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Long sleeve tight top</h2>
+                    <p class="text-sm text-gray-600">Casual.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/30.jpg" alt="Official/casual t-shirt" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Official/casual t-shirt</h2>
+                    <p class="text-sm text-gray-600">Cute.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/31.jpg" alt="Official/casual t-shirt" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Official/casual t-shirt</h2>
+                    <p class="text-sm text-gray-600">Cute.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/32.jpg" alt="Official/casual t-shirt" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Official/casual t-shirt</h2>
+                    <p class="text-sm text-gray-600">Cute.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/52.jpg" alt="reference tops" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">reference tops</h2>
+                    <p class="text-sm text-gray-600">Cute.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <img class="uploaded-image hidden mt-3 rounded w-full h-40 object-cover"> <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/53.jpg" alt="reference tops" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">reference tops</h2>
+                    <p class="text-sm text-gray-600">Cute.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/28.jpg" alt="vest top" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">vest top</h2>
+                    <p class="text-sm text-gray-600">classic.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sweater Section -->
+            <h2 class="text-xl font-semibold mt-4">Sweater</h2>
+            <div id="Sweater" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/22.jpg" alt="Long sleeve Sweat shirt" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Long sleeve Sweat shirt</h2>
+                    <p class="text-sm text-gray-600">Casual.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/33.jpg" alt="Long sleeved sweate" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Long sleeved sweater</h2>
+                    <p class="text-sm text-gray-600">Casual.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/19.jpg" alt="Cardigan" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Cardigan</h2>
+                    <p class="text-sm text-gray-600">Cute.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/34.jpg" alt="Sweater top" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Sweater top</h2>
+                    <p class="text-sm text-gray-600">Casual.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/21.jpg" alt="Half sweater" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Half sweater</h2>
+                    <p class="text-sm text-gray-600">Cute.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/23.jpg" alt="Long sleeved button up sweate" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Long sleeved button up sweater</h2>
+                    <p class="text-sm text-gray-600">Cute.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Jewellery Section -->
+            <h2 class="text-xl font-semibold mt-4">Jewellery</h2>
+            <div id="Jewellery" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/11.jpg" alt="Bracelet" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Bracelet</h2>
+                    <p class="text-sm text-gray-600">Minimalistic Bracelet.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/12.jpg" alt="Neckless" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2"> Neckless</h2>
+                    <p class="text-sm text-gray-600">Minimalistic Neckless.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- Bags Section -->
+            <h2 class="text-xl font-semibold mt-4">Bags</h2>
+            <div id="Bags" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/39.jpg" alt="Bags" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Bags</h2>
+                    <p class="text-sm text-gray-600">Not necessarilly the brands listed there(Those r pricey) but u get the jist.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/4.jpg" alt="Tote bag" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Tote bag</h2>
+                    <p class="text-sm text-gray-600">Casually convinient for me.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- Shorts Section -->
+            <h2 class="text-xl font-semibold mt-4">Shorts</h2>
+            <div id="Shorts" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/8.jpg" alt="Denim Shorts" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2"> Denim Shorts</h2>
+                    <p class="text-sm text-gray-600">those kind.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+            </div> 
+
+            <!-- Others Section -->
+            <h2 class="text-xl font-semibold mt-4">Others</h2>
+            <div id="Others" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/9.jpg" alt="Cap" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">Cap</h2>
+                    <p class="text-sm text-gray-600">those kind.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+
+                <div class="bg-white p-5 shadow rounded-lg h-auto">
+                    <img src="images/7.jpg" alt="socks" class="rounded w-full h-60 object-cover">
+                    <h2 class="text-lg font-semibold mt-2">socks</h2>
+                    <p class="text-sm text-gray-600">That length.</p>
+                    <input type="checkbox" onclick="markPurchased(this)" class="mt-2"> Mark as Purchased
+                    <div class="comments-section mt-2">
+                        <h3 class="text-md font-semibold">Comments</h3>
+                        <div class="comment-box border p-2 rounded mt-2">
+                            <input type="text" class="comment-input w-full p-1 border" placeholder="Write a comment...">
+                            <button class="comment-btn mt-2 bg-blue-500 text-white p-1 rounded">Post</button>
+                        </div>
+                        <div class="comments-list mt-3"></div> <!-- This will hold all comments -->
+                    </div> 
+                    <label class="block mt-3 text-sm font-medium text-gray-700">Upload what you found:</label> 
+                    <input type="file" accept="image/*" class="upload-input mt-2" onchange="previewImage(this)">
+                    <div class="relative mt-3">
+                        <img class="uploaded-image hidden rounded w-full h-40 object-cover">
+                        <button class="delete-btn absolute top-2 right-2 bg-red-500 text-white p-1 rounded hidden" onclick="deleteImage(this)">❌</button>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- Lightbox for Image Expansion -->
+            <div id="lightbox" class="hidden fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center">
+                 <img src="" alt="Expanded View" id="lightbox-img" class="max-w-full max-h-full rounded-lg">
+                 <span id="lightbox-close" class="absolute top-5 right-5 text-white text-3xl cursor-pointer">&times;</span>
+            </div>
+
+            
+
+        </div>
+    </div>
+
+    <script src="scripts.js" defer></script>
+</body>
+</html>
