@@ -2,6 +2,7 @@ const BASE_URL = 'https://wishlist-api-r8zs.onrender.com/api/wishlist';
 const PARTICIPANTS_URL = 'https://wishlist-api-r8zs.onrender.com/api/participants';
 
 
+
 // Function to mark an item as purchased and update backend
 async function markPurchased(checkbox, itemId) {
     const item = checkbox.closest('.bg-white');
